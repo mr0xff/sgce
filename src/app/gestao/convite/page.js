@@ -99,13 +99,15 @@ export default async function Page({searchParams}){
               nome, 
               _id, 
               email,
-              bloqueado
+              bloqueado,
+              usado
               })=><CartaoConvidado
                     key={_id} 
                     _id={_id.toString()} 
                     nome={nome} 
                     email={email} 
                     bloqueado={bloqueado}
+                    usado={usado}
                   />
             )}
         </ul> 

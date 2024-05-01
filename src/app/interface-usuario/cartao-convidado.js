@@ -15,16 +15,23 @@ import {
 } from "@/app/backend/banco-dados";
 
 import { enviarEmail } from "@/app/utilitarios/accoes";
+import clsx from "clsx";
 
 export default function CartaoConvidado({
   _id,
   nome,
   email,
-  bloqueado
+  bloqueado,
+  usado
 }){
 
   return(
-    <li key={_id} className='hover:shadow-md hover:bg-gray-200 bg-gray-100 px-3 py-2 rounded-md'>
+    <li key={_id} className={clsx({
+      'hover:shadow-md hover:bg-gray-200 bg-gray-100 px-3 py-2 rounded-md': true,
+      'bg-green-100': usado,
+      'border-2 border-red-300': bloqueado,
+      'hover:bg-red-300': bloqueado
+      })}>
             <div className='flex justify-between items-center'>
               <div>
                 <h2 className='text-lg'>Nome: {nome}</h2>
@@ -44,7 +51,10 @@ export default function CartaoConvidado({
                     const resultado = await bloquearDesbloquearConvidado(_id);
                     alert(resultado.mensagem);
                     window.location.reload();
-                  }} className='flex hover:bg-white/50 gap-3 rounded-md border-2 border-black/10  font-bold px-3 py-2 text-sm'>
+                  }} className={clsx({
+                    'flex hover:bg-white/50 gap-3 rounded-md border-2 border-black/10  font-bold px-3 py-2 text-sm': true,
+                    'border-2 border-red-300': bloqueado
+                    })}>
                     { bloqueado ?
                       <LockClosedIcon className="h-5 w-5" />:
                       <LockOpenIcon className="h-5 w-5" />

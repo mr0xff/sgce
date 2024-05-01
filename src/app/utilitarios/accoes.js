@@ -31,16 +31,16 @@ export async function enviarEmail(id){
     }));
 
     const transport = createTransport({
-      host: "mail.server.com",
+      host: "mail.lumuenuvetu.ao",
       port: 465,
       auth: {
-        user: "sgce@local.lan",
-        pass: "#$",
+        user: "sgce@lumuenuvetu.ao",
+        pass: "#$olamundo",
       }
     });
 
     const mailOptions = {
-      from: 'sgce@local.lan',
+      from: 'sgce@lumuenuvetu.ao',
       to: convidado.email,
       subject: `Convite para ${convite.tema}`,
       attachments: [
