@@ -1,4 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sistema de Gestao de Convites Electronicos - SGCE
+
+<img src="public/login_sgce.png" width="300px">
+
+Este é um projecto feio com o [Next.js](https://nextjs.org/).
+
+
+## Como instalar
+
+Para instalação vai precisar primeiro baixar o projecto `Next.js` vazio com o seguinte comando:
+
+```
+  npx create-next-app@latest sgce-web
+```
+
+>[!IMPORTANT] 
+>Caso use o yarn adicione a opção `--use-yarn`. 
+
+Conforme a imagem de baixo:
+
+<img src="public/install_next.png" width="300px">
+
+### Baixe e instale o *MongoDB Server*
+
+Use o link do [site oficial do mongodb](https://www.mongodb.com/try/download/community).
+
+
+
+<!-- This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -33,4 +61,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details. -->
