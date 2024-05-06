@@ -128,12 +128,12 @@ export async function enviarEmail(id){
     });
 
     return {
-      mensagem: "enviado com sucesso!",
+      mensagem: "Convite enviado com sucesso!",
       estado: true,
     }
   }catch(err){
     return {
-      mensagem: "falha",
+      mensagem: "falha no envio do convite",
       estado: false
     }
   }

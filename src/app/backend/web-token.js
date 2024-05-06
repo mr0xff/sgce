@@ -12,7 +12,7 @@ export const geraToken = (idUsuario)=>{
     const token = 
     new SignJWT({idUsuario})
     .setProtectedHeader({ alg: algoritmo })
-    .setExpirationTime('1min')
+    .setExpirationTime(process.env.JWT_TEMPO_VALIDADE_SESSAO)
     .sign(chaveSecreta)
 
     return token;

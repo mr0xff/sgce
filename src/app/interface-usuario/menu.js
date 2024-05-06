@@ -14,7 +14,7 @@ export default function Menu(){
     redirect('/');
 
   return(
-    <nav className="relative bg-indigo-500 text-white px-3 py-2 rounded-md">
+    <nav className="relative bg-indigo-500 text-white px-3 py-2 md:rounded-md">
       <h2 className="text-xl font-medium">Painel Admin</h2>
 
       <ul className="list-disc mt-3 ml-10">

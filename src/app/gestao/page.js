@@ -21,7 +21,7 @@ export default async function Page(){
         <Menu />
       </div>
 
-      <div className="border-b-2 mt-8">
+      <div className="border-b-2 mt-8 mx-3 md:mx-auto">
         <h2 className="text-black/50 font-medium text-sm">Lista de Convites</h2>
       </div>
       
@@ -34,8 +34,7 @@ export default async function Page(){
           id={_id}
         />
       }
-      ):<div>Sem convites cadastrados</div>}
-      
+      ):<div className="mx-3 md:mx-auto">Sem convites cadastrados</div>}
     </main>
   );
 }

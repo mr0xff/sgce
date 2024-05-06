@@ -13,7 +13,7 @@ import { geraToken } from "./web-token";
 import { redirect } from "next/navigation";
 import { enviarEmail } from "@/app/utilitarios/accoes";
 
-connect('mongodb://127.0.0.1:27017/sgce')
+connect(`${process.env.DB_URI}/${process.env.DB_BANCO}`)
 .then(async ()=>{
   const usuario = await loginModelo.findOne({usuario: 'admin'});
 
@@ -325,13 +325,13 @@ export async function enviarConviteParaTodos(formulario){
   })
 }
 connection.on('connected', ()=>{
-  console.log('[INFO] conexão com o banco de dados no ip 127.0.0.1');
+  console.log('[INFO] conexão com o banco de dados no', process.env.DB_URI);
 });
 
 connection.on('error', ()=>{
-  console.log('[ERRO] Falha na conexão com o banco de dados no ip 127.0.0.1');
+  console.log('[ERRO] Falha na conexão com o banco de dados no', process.env.DB_URI);
 });
 
 connection.on('disconnected', ()=>{
-  console.log('[AVISO] disconectado do banco de dados no ip 127.0.0.1');
+  console.log('[AVISO] disconectado do banco de dados no', process.env.DB_URI);
 });

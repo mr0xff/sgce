@@ -18,11 +18,11 @@ export default function Page(){
     <main className="container mx-auto flex flex-col items-center h-screen justify-center">
 
       <h2 className="text-5xl text-center">SGCE</h2>
-      <h2 className="w-5/6 md:w-96 mb-16 text-lg text-center">Sistema de Gestão do Convite Electrónico</h2>
+      <h2 className="w-5/6 md:w-96 md:mb-8 text-lg text-center">Sistema de Gestão do Convite Electrónico</h2>
 
-      <form className="space-y-3 w-5/6 md:w-96" action={ acaoForm }>
+      <form className="space-y-3 w-5/6 md:w-96" action={acaoForm}>
 
-        <h2 className="text-xl text-center">Painel Administrativo</h2>
+        <h2 className="hidden md:block text-xl text-center">Painel Administrativo</h2>
 
         <div>
           <input 

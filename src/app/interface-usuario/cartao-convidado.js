@@ -27,12 +27,12 @@ export default function CartaoConvidado({
 
   return(
     <li key={_id} className={clsx({
-      'hover:shadow-md hover:bg-gray-200 bg-gray-100 px-3 py-2 rounded-md': true,
+      'hover:shadow-md hover:bg-gray-200 bg-gray-100 px-3 py-2 rounded-md md:w-auto w-full': true,
       'bg-green-100': usado,
       'border-2 border-red-300': bloqueado,
       'hover:bg-red-300': bloqueado
       })}>
-            <div className='flex justify-between items-center'>
+            <div className='md:flex justify-between items-center'>
               <div>
                 <h2 className='text-lg'>Nome: {nome}</h2>
                 <p>Email: {email}</p>
@@ -86,8 +86,7 @@ export default function CartaoConvidado({
                 <div>
                     <button onClick={async()=>{
                       const resultado = await enviarEmail(_id);
-                      console.log(resultado);
-
+                      alert(resultado.mensagem);
                     }} className='flex hover:bg-white/50 gap-3 rounded-md border-2 border-black/10 font-bold px-3 py-2 text-sm'>
                       <PaperAirplaneIcon className="h-5 w-5" />
                     </button>
