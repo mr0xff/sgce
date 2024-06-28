@@ -1,6 +1,7 @@
 import clsx from "clsx";
 
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
 
 export default function Cabecalho({titulo, submenus, voltar}){
   
@@ -8,9 +9,9 @@ export default function Cabecalho({titulo, submenus, voltar}){
     <nav className="relative bg-indigo-500 text-white px-3 py-2 rounded-md">
       
       <div className="flex items-center gap-3">
-        <a href={voltar}>
+        <Link href={voltar}>
           <ChevronLeftIcon className="h-5 w-5" />
-        </a>
+        </Link>
         <h2 className="text-xl font-medium">{titulo}</h2>
       </div>
 
@@ -19,7 +20,7 @@ export default function Cabecalho({titulo, submenus, voltar}){
           <li key={index} className={clsx({
             "hover:underline hover:font-bold": true, 
             })}>
-             <a href={href}>{nome}</a>
+             <Link href={href}>{nome}</Link>
           </li>
         ))}
       </ul>}

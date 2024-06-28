@@ -1,11 +1,11 @@
-import { Roboto, Montaga } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const font = Montaga({ subsets: ["latin"], weight: ['400'] });
+const font = Inter({ subsets: ["latin"], weight: ['400'] });
 
 export const metadata = {
   title: "SGCE | Convite Electrónico",
-  description: "Programa de Gestão de Convite Electrónico",
+  description: "Sistema de Gestão de Convite Electrónico",
 };
 
 export default function RootLayout({children}) {

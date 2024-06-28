@@ -14,6 +14,8 @@ import {
   bloquearDesbloquearConvidado 
 } from "@/app/backend/banco-dados";
 
+import Link from "next/link";
+
 import { enviarEmail } from "@/app/utilitarios/accoes";
 import clsx from "clsx";
 
@@ -40,11 +42,11 @@ export default function CartaoConvidado({
 
               <div className='flex gap-3'>
 
-                <a href={`/gestao/convidado/editar?id=${_id}`}>
+                <Link href={`/gestao/convidado/editar?id=${_id}`}>
                   <button className='flex hover:bg-white/50 gap-3 rounded-md border-2 border-black/10  font-bold px-3 py-2 text-sm'>
                     <PencilSquareIcon className="h-5 w-5" />
                   </button>
-                </a>
+                </Link>
 
                 <div>
                   <button onClick={async()=>{
@@ -77,11 +79,11 @@ export default function CartaoConvidado({
                   </button>
                 </div>
 
-                <a href={`/gestao/convidado?id=${_id}`}>
+                <Link href={`/gestao/convidado?id=${_id}`}>
                   <button className='flex hover:bg-white/50 gap-3 rounded-md border-2 border-black/10 font-bold px-3 py-2 text-sm'>
                     <QrCodeIcon className="h-5 w-5" />
                   </button>
-                </a>
+                </Link>
 
                 <div>
                     <button onClick={async()=>{

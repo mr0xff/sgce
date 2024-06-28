@@ -9,12 +9,12 @@ export async function middleware(request) {
     const eValido = await verificarToken(token);
 
     if(!eValido){
-      return NextResponse.redirect(new URL('/?se=1', request.url)) // ss = sem expirada
+      return NextResponse.redirect(new URL('/?sessao-expirada', request.url)) // ss = sem expirada
     }
 
     return NextResponse.next();
   }
-  return NextResponse.redirect(new URL('/?ss=1', request.url)) // ss = sem sessão
+  return NextResponse.redirect(new URL('/?sem-sessao', request.url)) // ss = sem sessão
 }
  
 export const config = {

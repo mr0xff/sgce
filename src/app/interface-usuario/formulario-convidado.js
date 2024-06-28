@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import React,{ useState,useEffect } from "react";
 import { criarConvidado, listarConvites } from "../backend/banco-dados";
 import { useFormState } from 'react-dom';
 
@@ -11,11 +11,19 @@ const mensagem = {
 export default function FormularioConvidado(){
   const [ estado, accaoForm ] = useFormState(criarConvidado, mensagem);
   const [ convites, setConvites ] = useState([]);
-
+  const [ estadoMensagem, setEstadoMensagem ] = useState(false); 
+  
   const bustarConvites = async ()=>{
     const resultado = await listarConvites({tema: 1});
     setConvites(resultado);
   }
+
+  useEffect(()=>{
+    setEstadoMensagem(true);
+    setTimeout(()=>{
+      setEstadoMensagem(false);
+    }, 3000);
+  }, [estado]);
 
   return(
     <form action={accaoForm} className="lg:flex lg:flex-col lg:items-center space-y-3 mt-3 border-2 border-indigo-100 p-3 rounded-md">
@@ -54,10 +62,11 @@ export default function FormularioConvidado(){
         <div className="lg:w-1/2">
           <button className=" flex w-full font-medium bg-indigo-500 text-white p-2 justify-center">Cadastrar</button>
         </div>
-
+      { estado.mensagem && estadoMensagem &&
         <div>
           <p>{estado.mensagem}</p>
         </div>
+      }
     </form>
   )
 }

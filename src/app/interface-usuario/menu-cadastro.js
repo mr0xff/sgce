@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 
 import clsx from "clsx";
-
+import Link from "next/link";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 
 export default function MenuCadastro(){
@@ -18,9 +18,9 @@ export default function MenuCadastro(){
     <nav className="relative bg-indigo-500 text-white px-3 py-2 rounded-md">
       
       <div className="flex items-center gap-3">
-        <a href="/gestao">
+        <Link href="/gestao">
           <ChevronLeftIcon className="h-5 w-5" />
-        </a>
+        </Link>
         <h2 className="text-xl font-medium">Cadastro</h2>
       </div>
 
@@ -29,14 +29,14 @@ export default function MenuCadastro(){
           "hover:underline hover:font-bold": true, 
           "font-bold": tipo === 'convite',
           })}>
-          <a href="/gestao/cadastro?tipo=convite">Convites</a>
+          <Link href="/gestao/cadastro?tipo=convite">Convites</Link>
         </li>
 
         <li className={clsx({
           "hover:underline hover:font-bold": true, 
           "font-bold": tipo === 'convidado',
           })}>
-          <a href="/gestao/cadastro?tipo=convidado">Convidados</a>
+          <Link href="/gestao/cadastro?tipo=convidado">Convidados</Link>
         </li>
       </ul>
 

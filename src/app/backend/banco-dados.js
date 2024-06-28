@@ -5,17 +5,18 @@ import { cookies } from "next/headers";
 import { hash, verify } from "argon2";
 
 //modelos para interagir com o banco de dados
-import loginModelo from "./Esquemas/usuarios";
-import conviteModelo from "./Esquemas/convite";
-import convidadoModelo from "./Esquemas/convidado";
-import configModelo from "./Esquemas/config";
-import { geraToken } from "./web-token";
+import loginModelo from "@/app/backend/esquemas/usuarios";
+import conviteModelo from "@/app/backend/esquemas/convite";
+import convidadoModelo from "@/app/backend/esquemas/convidado";
+import configModelo from "@/app/backend/esquemas/config";
+import { geraToken } from "@/app/backend/web-token";
 import { redirect } from "next/navigation";
 import { enviarEmail } from "@/app/utilitarios/accoes";
 
-connect(`${process.env.DB_URI}/${process.env.DB_BANCO}`)
+connect(process.env.ENDERECO_DB)
 .then(async ()=>{
   const usuario = await loginModelo.findOne({usuario: 'admin'});
+  const configServidorEmail = await pegarConfiguracao();
 
   if(!usuario){
     const senha = await hash('admin');
@@ -25,6 +26,16 @@ connect(`${process.env.DB_URI}/${process.env.DB_BANCO}`)
     });
 
     await configUsuario.save();
+  }
+
+  if(!configServidorEmail){
+    const configPadrao = await configModelo({
+      srv_email: 'hostname.ou.ip_do_servidor',
+      srv_senha: 'definir sua senha',
+      srv_usuario: 'nome@host.com'
+    });
+    
+    await configPadrao.save();
   }
 })
 .catch((err)=>{
@@ -89,7 +100,7 @@ export async function criarConvite(prev, conviteFormualrio){
     try{
       await resultado.save();
       return {
-        mensagem: `Convite criado ${resultado._id}!`,
+        mensagem: 'Convite criado!',
         estado: true
       } 
     }catch(err){
@@ -325,13 +336,13 @@ export async function enviarConviteParaTodos(formulario){
   })
 }
 connection.on('connected', ()=>{
-  console.log('[INFO] conexão com o banco de dados no', process.env.DB_URI);
+  console.log('[INFO] conexão com o banco de dados no', process.env.ENDERECO_DB);
 });
 
 connection.on('error', ()=>{
-  console.log('[ERRO] Falha na conexão com o banco de dados no', process.env.DB_URI);
+  console.log('[ERRO] Falha na conexão com o banco de dados no', process.env.ENDERECO_DB);
 });
 
 connection.on('disconnected', ()=>{
-  console.log('[AVISO] disconectado do banco de dados no', process.env.DB_URI);
+  console.log('[AVISO] disconectado do banco de dados no', process.env.ENDERECO_DB);
 });

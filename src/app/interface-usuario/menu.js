@@ -4,6 +4,7 @@ import { eliminarToken } from "../backend/web-token";
 import { useFormState } from 'react-dom';
 import { redirect } from "next/navigation";
 import { PowerIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
 
 const retorno = false;
 
@@ -15,20 +16,16 @@ export default function Menu(){
 
   return(
     <nav className="relative bg-indigo-500 text-white px-3 py-2 md:rounded-md">
-      <h2 className="text-xl font-medium">Painel Admin</h2>
+      <h2 className="text-xl font-medium">Painel de Controle</h2>
 
       <ul className="list-disc mt-3 ml-10">
         <li className="hover:underline hover:font-bold">
-          <a href="/gestao/cadastro?tipo=convite">Cadastro</a>
+          <Link href="/gestao/cadastro?tipo=convite">Cadastro</Link>
         </li>
 
         <li className="hover:underline hover:font-bold">
-          <a href="/gestao/configuracao">Configurações</a>
+          <Link href="/gestao/configuracao">Configurações</Link>
         </li>
-
-        {/* <li className="hover:underline hover:font-bold">
-          <a href="/gestao/autenticacao">Autenticação</a>
-        </li> */}
       </ul>
 
       <form action={acaoForm} className="absolute top-5 right-5">

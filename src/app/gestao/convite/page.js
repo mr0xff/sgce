@@ -15,6 +15,7 @@ import {
 import { formatoDeData } from '@/app/utilitarios/ferramentas';
 import CartaoConvidado from '@/app/interface-usuario/cartao-convidado';
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 
 export default async function Page({searchParams}){
   const { id } = searchParams;
@@ -32,9 +33,9 @@ export default async function Page({searchParams}){
       <div className="relative min-h-28 space-y-3 rounded-md bg-indigo-500 text-white px-3 py-2 mt-3">
         
         <div className="flex items-center gap-3">
-          <a href="/gestao">
+          <Link href="/gestao">
             <ChevronLeftIcon className="h-5 w-5" />
-          </a>
+          </Link>
           <h2 className="text-xl font-medium">Detalhes do Convite</h2>
         </div>
 
@@ -48,7 +49,7 @@ export default async function Page({searchParams}){
         
         <div className="absolute top-0 right-3 space-y-3 w-3/2">
 
-          <a href={`/gestao/convite/editar?id=${id}`}>
+          <Link href={`/gestao/convite/editar?id=${id}`}>
             <div className='hidden md:block md:w-full'>
               <button type="submit" className='flex justify-between hover:bg-white/25 gap-3 rounded-md border-2 border-white/50 font-bold px-3 py-2 text-sm w-full'>
                 Editar
@@ -59,7 +60,7 @@ export default async function Page({searchParams}){
             <button  className='md:hidden flex justify-between hover:bg-white/25 gap-3 rounded-md border-2 border-white/50 font-bold px-3 py-2 text-sm w-full'>
               <PencilSquareIcon className="h-5 w-5" />
             </button>
-          </a>
+          </Link>
 
           <form action={apagarConvite}>
             <input type="hidden" name="id" value={id} />

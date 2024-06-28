@@ -1,5 +1,5 @@
 import { pegarConvidado } from "@/app/backend/banco-dados";
-import convidadoModelo from "@/app/backend/Esquemas/convidado";
+import convidadoModelo from "@/app/backend/esquemas/convidado";
 
 export async function POST(request){
   try{

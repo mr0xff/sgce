@@ -3,8 +3,8 @@
 import { redirect } from "next/navigation";
 
 import { createTransport } from 'nodemailer';
-import convidadoModelo from "../backend/Esquemas/convidado";
-import conviteModelo from "../backend/Esquemas/convite";
+import convidadoModelo from "../backend/esquemas/convidado";
+import conviteModelo from "../backend/esquemas/convite";
 import { formatoDeData } from "./ferramentas";
 import { pegarConfiguracao } from "@/app/backend/banco-dados";
 import Qrcode from "qrcode";
@@ -106,6 +106,7 @@ export async function enviarEmail(id){
               <p>Data: ${await formatoDeData(convite.data)}</p>
               <p>Horário: ${convite.data.getHours()}h e ${convite.data.getMinutes()}min</p>
               <p>Local: ${convite.local}</p>
+              <p>Anexamos a baixo o seu convite electronico que vai apresentar no local do evento.</p>
           </div>
       </body>
       </html>
