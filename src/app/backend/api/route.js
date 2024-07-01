@@ -1,12 +1,14 @@
+import { exec } from 'child_process';
 import { pegarConvidado } from "@/app/backend/banco-dados";
 import convidadoModelo from "@/app/backend/esquemas/convidado";
+
 
 export async function POST(request){
   try{
     
   const data = new URL(request.url);
   const id = data.searchParams.get('id');
-  
+ 
   const convidado = await pegarConvidado({_id: id});
   
   if(!convidado)
@@ -24,7 +26,17 @@ export async function POST(request){
       estado: false,
     });
   // actualizar o campo usado
-  await convidadoModelo.findOneAndUpdate({_id: id},{ usado: true });
+  exec(`${process.cwd()}/arduino.sh`, (err)=>{
+    if(err){
+      console.log(err);
+      return;
+    }
+    console.log('Catraca aberta');
+  }); 
+
+  await convidadoModelo.updateOne({_id: convidado._id}, {
+    usado: true,
+  });
 
   return Response.json({
     mensagem: "convidado autorizado!",

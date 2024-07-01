@@ -170,6 +170,7 @@ export async function pegarConvidado(filtro){
   const resultado = await convidadoModelo.findOne(filtro);
   return resultado;
 }
+
 export async function listarConvidados(filtro){
   const resultado = await convidadoModelo.find(filtro);
   return resultado;
